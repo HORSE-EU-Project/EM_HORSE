@@ -1,0 +1,13 @@
+{
+  "id": "9b11b797-3358-5c62-9142-915422967c10",
+  "name": "DOT-Template",
+  "version": "0.0.0",
+  "metadata": {
+    "namespace": "mare6g.eu"
+  },
+  "skills": [],
+  "capabilities": [],
+  "contracts": [],
+  "runtimes": [],
+  "workflows": []
+}

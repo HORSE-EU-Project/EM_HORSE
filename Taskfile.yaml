@@ -1,0 +1,74 @@
+version: "3"
+
+env:
+  NAME: "DOT-Template"
+  VERSION: "0.0.0"
+  NAMESPACE: "mare6g.eu"
+
+vars:
+  NS_ID:
+    sh: test -x "$(command -v uuidgen 2>/dev/null)" && uuidgen --sha1 --namespace @dns --name "${NAMESPACE}" || echo ""
+  ID:
+    sh: test -x "$(command -v uuidgen 2>/dev/null)" && uuidgen --sha1 --namespace "{{.NS_ID}}" --name "${NAME}" || echo ""
+
+tasks:
+  default:
+    silent: true
+    cmds:
+      - echo "[MARE] ${NAME} v${VERSION}"
+  setup:
+    cmds:
+      - sudo apt-get update -y
+      - sudo apt-get install -y uuid-runtime
+      - sudo apt-get install -y jsonnet
+      - sudo apt-get install -y jq
+  namespace-id:
+    aliases:
+      - ns-id
+    silent: true
+    preconditions:
+      - sh: test -x "$(command -v uuidgen 2>/dev/null)"
+        msg: "uuidgen is not installed. Please run 'task setup' first."
+    cmds:
+      - echo "{{.NS_ID}}"
+  id:
+    silent: true
+    preconditions:
+      - sh: test -x "$(command -v uuidgen 2>/dev/null)"
+        msg: "uuidgen is not installed. Please run 'task setup' first."
+    cmds:
+      - echo "{{.ID}}"
+  bundle:
+    silent: true
+    preconditions:
+      - sh: test -x "$(command -v jsonnet 2>/dev/null)"
+        msg: "jsonnet is not installed. Please run 'task setup' first."
+    cmds:
+      - |
+        jsonnet \
+        --ext-str ID="{{.ID}}" \
+        --ext-str NAME="${NAME}" \
+        --ext-str VERSION="${VERSION}" \
+        --ext-str NAMESPACE="${NAMESPACE}" \
+        --output-file "dot/dot.json" \
+        dot/dot.jsonnet
+      - task sort
+  sort:
+    silent: true
+    preconditions:
+      - sh: test -x "$(command -v jq 2>/dev/null)"
+        msg: "jq is not installed. Please run 'task setup' first."
+    cmds:
+      - |
+        jq "{ \
+          id: .id, \
+          name: .name, \
+          version: .version, \
+          metadata: .metadata, \
+          skills: .skills, \
+          capabilities: .capabilities, \
+          contracts: .contracts, \
+          runtimes: .runtimes, \
+          workflows: .workflows \
+        }" \
+        dot/dot.json > dot/dot.json.tmp && mv dot/dot.json.tmp dot/dot.json
