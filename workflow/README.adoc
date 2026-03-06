@@ -1,3 +1,0 @@
-= DOT-Workflow
-
-This folder contains the DOT workflows.

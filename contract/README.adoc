@@ -1,3 +1,0 @@
-= DOT-Contract
-
-This folder contains the DOT contracts, such as OpenAPI, ProtoBuf, GraphQL, etc.

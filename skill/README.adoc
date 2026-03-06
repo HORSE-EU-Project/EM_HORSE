@@ -1,3 +1,0 @@
-= DOT-Skill
-
-This folder contains the DOT skills.

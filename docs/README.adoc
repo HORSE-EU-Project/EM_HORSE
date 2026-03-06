@@ -1,3 +1,0 @@
-= DOT-Documentation
-
-This folder contains the DOT documentation static website such as https://antora.org/[Antora].

@@ -1,0 +1,82 @@
+{
+	"ThreatModel": {
+		"ThreatModelElement": {
+			"CyberAttack": {
+				"Type": "Network Denial of Service",
+				"Pattern": "",
+				"Vector": {
+					"Attack_timestamp": "2025-05-28T19:21:44.613z",
+					"Attack_location": "NTP server",
+					"Attack_IPAddress": "192.255.255.200",
+					"Parameter": "Count of packets NTP monlist"
+				},
+				"ATT_CK": {
+					"Type": "",
+					"ID": ""
+				},
+				"Attack_impact": {
+					"Estimated_impact": {
+						"System_parameter": "Server-side processing time",
+						"System_components": "Server",
+						"System_services": "End user Application"
+					},
+					"Real_impact": {
+						"Attack_Propagation": ""
+					}
+				}
+			},
+			"OrganizationAsset": {
+				"Network_Features": {
+					"Nodes": {
+						"Node_id": "1",
+						"Node_Name": "Server",
+						"Node_Type": "Pimary",
+						"Node_Area": "",
+						"Node_IPaddress": "192.168.0.200"
+					},
+					"Ports": {
+						"Port_id": "1",
+						"Port_number": "123",
+						"Port_type": "UDP",
+						"Port_status": "Open"
+					}
+				}
+			},
+			"ThreatActor": {
+				"AdversaryGroup": "",
+				"Techniques": "",
+				"Intension": "",
+				"TTP": {
+					"Tactics": "",
+					"Technique": "",
+					"Procedure": ""
+				},
+				"Vulnerability": {
+					"Source": "",
+					"Destination": "",
+					"Timestamp": ""
+				},
+				"_IP_address": ""
+			},
+			"ControlAction": {
+				"Mitigation": {
+					"MitigationAction": {
+						"Type": "FilterNetworkTraffic",
+						"ATT_CKID": "M1037"
+					},
+					"MitigationCondition": {
+						"FilterCondition": {
+							"SourceAddress": "2001:720:1710:4::5001/128"
+						},
+						"isCNF": "false",
+						"_type": "FilterNetworkTrafficCondition"
+					}
+				}
+			},
+			"_id": "tme_6d3c88w5rt45873g98el723f7g92j63l"
+		},
+		"_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+		"_id": "tm_8b2c65n3dr87345s54gd746b7h83t82k",
+		"_xsi:noNamespaceSchemaLocation": "threatModel.xsd"
+	}
+}

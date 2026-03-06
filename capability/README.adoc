@@ -1,3 +1,0 @@
-= DOT-Capability
-
-This folder contains the DOT capabilities by defining custom workflows.

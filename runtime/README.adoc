@@ -1,3 +1,0 @@
-= DOT-Runtime
-
-This folder contains the DOT supported runtimes, such as Kubernetes, WebAssembly.

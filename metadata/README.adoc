@@ -1,3 +1,0 @@
-= DOT-Metadata
-
-This folder contains the DOT metadata.
